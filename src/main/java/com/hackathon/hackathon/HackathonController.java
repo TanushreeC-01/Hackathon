@@ -18,4 +18,15 @@ public class HackathonController {
             return "Hello World" ;
         }
 
+    @PostMapping(value = "/github", consumes = "application/json")
+    public ResponseEntity<Map<String,Object>> onGitHub(
+            @RequestHeader(value="X-GitHub-Event", required=false) String event,
+            @RequestHeader(value="X-GitHub-Delivery", required=false) String deliveryId,
+            @RequestBody Map<String,Object> payload // for quick start; see raw-body section below
+    ) {
+        // 1) Basic logging
+        System.out.println("GH delivery=" + deliveryId + " event=" + event);
+
+        return ResponseEntity.ok(Map.of("ok", true));
+    }
     }
