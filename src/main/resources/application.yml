@@ -1,0 +1,9 @@
+github:
+ token: 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
+ api-url: https://api.github.com
+
+openai:
+  api:
+   key:
+  model: gpt-3.5-turbo
+
