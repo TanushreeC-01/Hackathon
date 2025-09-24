@@ -17,9 +17,10 @@ public class WebhookController {
     @Autowired
     private OpenAIService openAIService;
 
-//    public WebhookController(ReviewService reviewService) {
-//        this.reviewService = reviewService;
-//    }
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "Hackathon pr";
+    }
 
     @PostMapping(value = "/github", consumes = "application/json")
     public ResponseEntity<Map<String, Object>> onGitHub(
