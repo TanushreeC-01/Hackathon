@@ -104,16 +104,16 @@ import java.nio.charset.StandardCharsets;
             String rawJson = responseBuilder.toString();
             String marker = "\"content\":\"";
             int start = rawJson.indexOf(marker);
-            if (start == -1) return "AI response not found.";
+           // if (start == -1) return "AI response not found.";
 
             start += marker.length();
             int end = rawJson.indexOf("\"", start);
-            if (end == -1) return "AI response incomplete.";
+           // if (end == -1) return "AI response incomplete.";
 
             String content = rawJson.substring(start, end);
             return content.replace("\\n", "\n").replace("\\\"", "\"");
 
         } catch (Exception e) {
-            return "AI validation failed: " + e.getMessage();
+            return " validation failed: " + e.getMessage();
         }
     }}

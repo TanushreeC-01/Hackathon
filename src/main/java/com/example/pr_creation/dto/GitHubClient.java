@@ -1,9 +1,7 @@
 package com.example.pr_creation.dto;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,14 @@ public interface GitHubClient {
             @PathVariable("owner") String owner,
             @PathVariable("repo") String repo,
             @PathVariable("pull_number") int pullNumber,
+            @RequestHeader("Authorization") String token
+    );
+    @PostMapping("/repos/{owner}/{repo}/issues/{pull_number}/comments")
+    AddComment addcomment(
+            @PathVariable("owner") String owner,
+            @PathVariable("repo") String repo,
+            @PathVariable("pull_number") int pullNumber,
+            @RequestBody AddComment comment,
             @RequestHeader("Authorization") String token
     );
 

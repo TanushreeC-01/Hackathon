@@ -4,6 +4,6 @@ github:
 
 openai:
   api:
-   key: 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
+   key:
   model: gpt-3.5-turbo
 

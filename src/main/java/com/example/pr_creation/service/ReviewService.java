@@ -1,5 +1,6 @@
 package com.example.pr_creation.service;
 
+import com.example.pr_creation.dto.AddComment;
 import com.example.pr_creation.dto.ChangedFile;
 import com.example.pr_creation.dto.GitHubClient;
 import com.example.pr_creation.dto.GitHubPRPayload;
@@ -50,9 +51,20 @@ public class ReviewService {
             System.out.println("❌ PR title is missing");
         } else {
             System.out.println("✅ PR title: " + pr.getTitle());
+            if(pr.getTitle().contains("test")){
+                AddComment comment = new AddComment();
+                comment.setBody("Avoid using naked string literals here. Please extract it into a [private static final] constant or use an enum. This improves readability, avoids duplication, and makes future maintenance easier.\n" + " ");
+                AddComment addComment = githubClient.addcomment(owner, repo, prNumber, comment, token);
+            }
+            if(pr.getTitle().contains("Checking")){
+                AddComment comment = new AddComment();
+                comment.setBody("Final variables should use UPPER_SNAKE_CASE to follow Java standards.\n" + " ");
+                AddComment addComment = githubClient.addcomment(owner, repo, prNumber, comment, token);
+            }
             System.out.println("PR state: " + pr.getState());
             System.out.println("PR Body: " + pr.getBody());
         }
+
 
         // Add more validations here
     }
